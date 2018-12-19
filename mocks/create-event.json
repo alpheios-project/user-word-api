@@ -1,0 +1,8 @@
+{
+  "body": "{\"content\":\"hello world\",\"attachment\":\"hello.jpg\"}",
+  "requestContext": {
+    "authorizer": {
+      "principalId": "auth0|5c1241eb0a73fe194ce44ef9"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "body": "{\"content\":\"new world\",\"attachment\":\"new.jpg\"}",
+  "pathParameters": {
+    "id": "60883360-0395-11e9-b4b4-192fc541bf5e"
+  },
+  "requestContext": {
+    "authorizer": {
+      "principalId": "kirlat@yula.media"
+    }
+  }
+}
