@@ -1,7 +1,7 @@
 /* global window document localStorage fetch alert */
 
 // Fill in with your values
-var AUTH0_CLIENT_ID = 'AUTHO_CLIENT_ID'
+var AUTH0_CLIENT_ID = 'AUTHO_CLIENT_ID';
 var AUTH0_DOMAIN = 'alpheios.auth0.com';
 var AUTH0_CALLBACK_URL = window.location.href; // eslint-disable-line
 var PRIVATE_ENDPOINT = 'https://k9z4qmom0i.execute-api.us-east-2.amazonaws.com/prod/notes';
