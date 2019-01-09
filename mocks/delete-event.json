@@ -1,10 +1,10 @@
 {
   "pathParameters": {
-    "id": "60883360-0395-11e9-b4b4-192fc541bf5e"
+    "id": "lat:puella"
   },
   "requestContext": {
     "authorizer": {
-      "principalId": "auth0|5c1241eb0a73fe194ce44ef9"
+      "principalId": "mock-oauth2|9999999999"
     }
   }
 }

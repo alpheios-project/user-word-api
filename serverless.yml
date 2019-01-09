@@ -1,4 +1,4 @@
-service: notes-app-api
+service: user-word-api
 
 # Use the serverless-webpack plugin to transpile ES6
 plugins:
@@ -20,6 +20,7 @@ provider:
   environment:
     AUTH0_CLIENT_ID: ${file(./secrets.json):AUTH0_CLIENT_ID}
     AUTH0_CLIENT_PUBLIC_KEY: ${file(./public_key)}
+    DATABASE_NAME: user-word-items
 
   # 'iamRoleStatements' defines the permission policy for the Lambda function.
   # In this case Lambda functions are granted with permissions to access DynamoDB.
@@ -40,7 +41,7 @@ functions:
     handler: authorize.main
     cors: true
   # Defines an HTTP API endpoint that calls the main function in create.js
-  # - path: url path is /notes
+  # - path: url path is /words
   # - method: POST request
   # - cors: enabled CORS (Cross-Origin Resource Sharing) for browser cross
   #     domain api call
@@ -49,67 +50,75 @@ functions:
     handler: create.main
     events:
       - http:
-          path: notes
+          path: words/{id}
           method: post
           cors: true
           authorizer:
             name: authorizerFunc
             type: token
   # Defines an HTTP API endpoint that calls the main function in get.js
-  # - path: url path is /notes/{id}
+  # - path: url path is /words/{id}
   # - method: GET request
   get:
     handler: get.main
     events:
       - http:
-          path: notes/{id}
+          path: words/{id}
           method: get
           cors: true
           authorizer:
             name: authorizerFunc
             type: token
   # Defines an HTTP API endpoint that calls the main function in list.js
-  # - path: url path is /notes
+  # - path: url path is /words
   # - method: GET request
   list:
     handler: list.main
     events:
       - http:
-          path: notes
+          path: words
           method: get
+          request:
+            parameters:
+              querystrings:
+                languageCode: false
           cors: true
           authorizer:
             name: authorizerFunc
             type: token
       - http:
-          path: notes
+          path: words
           method: post
+          request:
+            parameters:
+              querystrings:
+                languageCode: false
           cors: true
           authorizer:
             name: authorizerFunc
             type: token
 
   # Defines an HTTP API endpoint that calls the main function in update.js
-  # - path: url path is /notes/{id}
+  # - path: url path is /words/{id}
   # - method: PUT request
   update:
     handler: update.main
     events:
       - http:
-          path: notes/{id}
+          path: words/{id}
           method: put
           cors: true
           authorizer:
             name: authorizerFunc
             type: token
   # Defines an HTTP API endpoint that calls the main function in delete.js
-  # - path: url path is /notes/{id}
+  # - path: url path is /words/{id}
   # - method: DELETE request
   delete:
     handler: delete.main
     events:
       - http:
-          path: notes/{id}
+          path: words/{id}
           method: delete
           cors: true
           authorizer:

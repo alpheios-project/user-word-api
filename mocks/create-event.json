@@ -1,8 +1,11 @@
 {
-  "body": "{\"content\":\"hello world\",\"attachment\":\"hello.jpg\"}",
+  "pathParameters": {
+    "id": "lat:puella"
+  },
+  "body": "{\"languageCode\":\"lat\",\"targetWord\":\"puella\", \"important\":\"true\" }",
   "requestContext": {
     "authorizer": {
-      "principalId": "auth0|5c1241eb0a73fe194ce44ef9"
+      "principalId": "mock-oauth2|9999999999"
     }
   }
 }

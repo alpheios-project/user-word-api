@@ -1,0 +1,11 @@
+{
+  "pathParameters": {
+    "id": "grc:ποιητὴς"
+  },
+  "body": "{\"languageCode\":\"grc\",\"targetWord\":\"ποιητὴς\", \"important\":\"true\" }",
+  "requestContext": {
+    "authorizer": {
+      "principalId": "mock-oauth2|9999999999"
+    }
+  }
+}
