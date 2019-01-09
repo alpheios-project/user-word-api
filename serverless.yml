@@ -19,9 +19,7 @@ provider:
   region: us-east-2
   environment:
     AUTH0_CLIENT_PUBLIC_KEY: ${file(./public_key)}
-    AUTH0_AUDIENCE:
-      - net.alpheios:apis
-      - https://alpheios.auth0.com/userinfo
+    AUTH0_AUDIENCE: net.alpheios:apis,,https://alpheios.auth0.com/userinfo
     DATABASE_NAME: user-word-items
 
   # 'iamRoleStatements' defines the permission policy for the Lambda function.
