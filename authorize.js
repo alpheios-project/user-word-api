@@ -1,8 +1,8 @@
 import * as jwt from "jsonwebtoken";
 
 // Set in `environment` of serverless.yml
-const AUTH0_CLIENT_ID = process.env.AUTH0_CLIENT_ID;
 const AUTH0_CLIENT_PUBLIC_KEY = process.env.AUTH0_CLIENT_PUBLIC_KEY;
+const AUTH0_AUDIENCE = process.env.AUTH0_AUDIENCE.split(/,/)
 
 
 export function main(event, context, callback) {
@@ -18,12 +18,11 @@ export function main(event, context, callback) {
     return callback('Unauthorized');
   }
   const options = {
-    audience: AUTH0_CLIENT_ID,
+    audience: AUTH0_AUDIENCE
   };
   try {
     jwt.verify(tokenValue, AUTH0_CLIENT_PUBLIC_KEY, options, (verifyError, decoded) => {
       if (verifyError) {
-        console.log('verifyError', verifyError);
         // 401 Unauthorized
         console.log(`Token invalid. ${verifyError}`);
         return callback('Unauthorized');

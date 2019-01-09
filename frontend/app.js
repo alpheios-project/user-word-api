@@ -1,16 +1,17 @@
 /* global window document localStorage fetch alert */
 
 // Fill in with your values
-var AUTH0_CLIENT_ID = 'AUTHO_CLIENT_ID';
+var AUTH0_CLIENT_ID = 'AUTH0_CLIENT_ID';
 var AUTH0_DOMAIN = 'alpheios.auth0.com';
 var AUTH0_CALLBACK_URL = window.location.href; // eslint-disable-line
-var PRIVATE_ENDPOINT = 'https://k9z4qmom0i.execute-api.us-east-2.amazonaws.com/prod/notes';
+var PRIVATE_ENDPOINT = 'https://w2tfh159s2.execute-api.us-east-2.amazonaws.com/prod/words';
 
 // initialize auth0 lock
 var lock = new Auth0Lock(AUTH0_CLIENT_ID, AUTH0_DOMAIN, { // eslint-disable-line no-undef
 
   auth: {
     params: {
+      audience: 'alpheios.net:apis',
       scope: 'openid email',
     },
     responseType: 'token id_token',
@@ -58,7 +59,7 @@ document.getElementById('btn-login').addEventListener('click', () => {
 // Handle logout
 document.getElementById('btn-logout').addEventListener('click', () => {
   localStorage.removeItem('id_token');
-  localStorage.removeItem('access_token');
+  localStorage.removeItem('accessToken');
   localStorage.removeItem('profile');
   document.getElementById('btn-login').style.display = 'flex';
   document.getElementById('btn-logout').style.display = 'none';
@@ -69,7 +70,7 @@ document.getElementById('btn-logout').addEventListener('click', () => {
 // Handle private api call
 document.getElementById('btn-private').addEventListener('click', () => {
   // Call private API with JWT in header
-  const token = localStorage.getItem('id_token');
+  const token = localStorage.getItem('accessToken');
   /*
    // block request from happening if no JWT token present
    if (!token) {
