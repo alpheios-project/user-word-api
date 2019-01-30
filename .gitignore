@@ -57,3 +57,5 @@ venv
 # secrets
 secrets.json
 public_key
+test_id
+auth-invoke-testid.json

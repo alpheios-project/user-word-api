@@ -1,0 +1,10 @@
+{
+  "queryStringParameters": {
+    "languageCode": "lat"
+  },
+  "requestContext": {
+    "authorizer": {
+      "principalId": "mock-oauth2|9999999999"
+    }
+  }
+}

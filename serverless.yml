@@ -4,6 +4,7 @@ service: user-word-api
 plugins:
   - serverless-webpack
   - serverless-offline
+  - serverless-aws-documentation
 
 # serverless-webpack configuration
 # Enable auto-packing of external modules
@@ -20,6 +21,7 @@ provider:
   environment:
     AUTH0_CLIENT_PUBLIC_KEY: ${file(./public_key)}
     AUTH0_AUDIENCE: alpheios.net:apis
+    AUTH0_TEST_ID: ${file(./test_id)} 
     DATABASE_NAME: user-word-items
 
   # 'iamRoleStatements' defines the permission policy for the Lambda function.
@@ -120,6 +122,23 @@ functions:
       - http:
           path: words/{id}
           method: delete
+          cors: true
+          authorizer:
+            name: authorizerFunc
+            type: token
+  # Defines an HTTP API endpoint that calls the main function in delete-list.js
+  # - path: url path is /words/{id}
+  # - method: DELETE request
+  deleteList:
+    handler: delete-list.main
+    events:
+      - http:
+          path: words
+          method: delete
+          request:
+            parameters:
+              querystrings:
+                languageCode: true
           cors: true
           authorizer:
             name: authorizerFunc
