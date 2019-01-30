@@ -29,7 +29,7 @@ export async function main(event, context) {
   try {
     const result = await dynamoDbLib.call("query", params);
     // Return the matching list of items in response body
-    return success(result.Items);
+    return success(result.Items.map(i => i.content));
   } catch (e) {
     console.log(e)
     return failure({ status: false });
