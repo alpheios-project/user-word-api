@@ -1,6 +1,6 @@
 import uuid from "uuid";
 import * as dynamoDbLib from "./libs/dynamodb-lib";
-import { success, failure } from "./libs/response-lib";
+import { created, failure } from "./libs/response-lib";
 
 const TABLE_NAME = process.env.DATABASE_NAME
 
@@ -19,7 +19,7 @@ export async function main(event, context) {
 
   try {
     await dynamoDbLib.call("put", params);
-    return success(params.Item);
+    return created(params.Item);
   } catch (e) {
     console.log(e)
     return failure({ status: false });
