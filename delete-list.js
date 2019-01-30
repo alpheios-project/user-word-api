@@ -23,8 +23,7 @@ export async function main(event, context) {
           TableName: TABLE_NAME,
           Key: {
             userId: event.requestContext.authorizer.principalId,
-            wordId: item.wordI
-            d
+            wordId: item.wordId
           }
         };
         try {
