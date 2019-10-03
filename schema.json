@@ -1,0 +1,233 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://alpheios.net/schemas/apis/user-word/item.json",
+  "type": "object",
+  "title": "Schema for a User Word Item",
+  "definitions": {
+    "targetWord": {
+      "$id": "#/definitions/targetWord",
+      "type": "string",
+      "title": "Target Word Schema",
+      "default": "",
+      "examples": [
+        "cespitum"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "languageCode": {
+      "$id": "#/definitions/languageCode",
+      "type": "string",
+      "title": "Language Code Schema",
+      "default": "",
+      "examples": [
+        "lat"
+      ],
+      "pattern": "^\\w\\w\\w$"
+    },
+    "createdDT": {
+      "$id": "#/definitions/createdDT",
+      "type": "string",
+      "title": "Created DT Schema",
+      "default": "",
+      "examples": [
+        "2019/10/03 @ 12:56:58"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "selector": {
+      "$id": "#/definitions/imported/oa/selector",
+      "type": "object",
+      "title": "Selector Schema (see http://www.w3.org/ns/oa#TextQuoteSelector )",
+      "required": [
+        "type",
+        "exact",
+        "prefix",
+        "suffix",
+        "languageCode"
+      ],
+      "properties": {
+        "type": {
+          "$id": "#/definitions/imported/oa/type",
+          "type": "string",
+          "title": "Type Schema",
+          "default": "TextQuoteSelector",
+          "examples": [
+            "TextQuoteSelector"
+          ],
+          "pattern": "^TextQuoteSelector$"
+        },
+        "exact": {
+          "$id": "#/definitions/imported/oa/exact",
+          "type": "string",
+          "title": "Exact Schema",
+          "default": "",
+          "examples": [
+            "cespitum"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "prefix": {
+          "$id": "#/definitions/imported/oa/prefix",
+          "type": "string",
+          "title": "Prefix Schema",
+          "default": "",
+          "examples": [
+            "words that come before"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "suffix": {
+          "$id": "#/definitions/imported/oa/suffix",
+          "type": "string",
+          "title": "Suffix Schema",
+          "default": "",
+          "examples": [
+            "words that come after"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "languageCode": {
+          "$ref": "#/definitions/languageCode"
+        }
+      }
+    }
+  },
+  "required": [
+    "ID",
+    "listID",
+    "userID",
+    "languageCode",
+    "targetWord",
+    "important",
+    "createdDT",
+    "context"
+  ],
+  "optional": [
+    "homonym"
+  ],
+  "properties": {
+    "ID": {
+      "$id": "#/properties/ID",
+      "type": "string",
+      "title": "Word Item ID Schema",
+      "default": "",
+      "examples": [
+        "lat-cespitum"
+      ],
+      "pattern": "^\\w\\w\\w-(.*)$"
+    },
+    "listID": {
+      "$id": "#/properties/listID",
+      "type": "string",
+      "title": "List ID Schema",
+      "default": "",
+      "examples": [
+        "auth0|5c76d34f0570702eabd4c27e-lat"
+      ],
+      "pattern": "^(.*?)|(.*?)-\\w\\w\\w$"
+    },
+    "userID": {
+      "$id": "#/properties/userID",
+      "type": "string",
+      "title": "Userid Schema",
+      "default": "",
+      "examples": [
+        "auth0|5c76d34f0570702eabd4c27e"
+      ],
+      "pattern": "^auth0|.*$"
+    },
+    "languageCode": {
+      "$ref": "#/definitions/languageCode"
+    },
+    "targetWord": {
+      "$ref": "#/definitions/targetWord"
+    },
+    "important": {
+      "$id": "#/properties/important",
+      "type": "boolean",
+      "title": "Important Schema",
+      "default": false,
+      "examples": [
+        false
+      ]
+    },
+    "createdDT": {
+      "$ref": "#/definitions/createdDT"
+    },
+    "homonym": {
+      "$id": "#/properties/homonym",
+      "type": "object",
+      "title": "Homonym Schema",
+      "required": [
+        "targetWord",
+        "lemmasList"
+      ],
+      "properties": {
+        "targetWord": {
+          "$ref": "#/definitions/targetWord"
+        },
+        "lemmasList": {
+          "$id": "#/properties/homonym/properties/lemmasList",
+          "type": "string",
+          "title": "Lemmas List Schema",
+          "default": "",
+          "examples": [
+            "cespes"
+          ],
+          "pattern": "^(.*)$"
+        }
+      }
+    },
+    "context": {
+      "$id": "#/properties/context",
+      "type": "array",
+      "title": "Context Schema",
+      "items": {
+        "$id": "#/properties/context/items",
+        "type": "object",
+        "title": "The Items Schema",
+        "required": [
+          "target",
+          "languageCode",
+          "targetWord",
+          "createdDT"
+        ],
+        "properties": {
+          "target": {
+            "$id": "#/properties/context/items/properties/target",
+            "type": "object",
+            "title": "Context Target Schema",
+            "required": [
+              "source",
+              "selector"
+            ],
+            "properties": {
+              "source": {
+                "$id": "#/properties/context/items/properties/target/properties/source",
+                "type": "string",
+                "title": " Source Schema",
+                "default": "",
+                "examples": [
+                  "http://thelatinlibrary.com/apuleius/apuleius1.shtml"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "selector": {
+                "$ref": "#/definitions/imported/oa/selector"
+              }
+            }
+          },
+          "languageCode": {
+            "$ref": "#/definitions/languageCode"
+          },
+          "targetWord": {
+            "$ref": "#/definitions/targetWord"
+          },
+          "createdDT": {
+            "$ref": "#/definitions/createdDT"
+          }
+        }
+      }
+    }
+  }
+}
