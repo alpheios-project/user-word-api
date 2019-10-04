@@ -1,8 +1,8 @@
 {
   "pathParameters": {
-    "id": "lat:puella"
+    "id": "lat:footest"
   },
-  "body": "{\"languageCode\":\"lat\",\"targetWord\":\"puella\", \"important\":\"true\" }",
+  "body": "{\"ID\": \"lat-footest\",\"listID\": \"auth0|999999999999999999999999-lat\",\"userID\": \"auth0|999999999999999999999999\", \"languageCode\": \"lat\",\"targetWord\": \"footest\",\"important\": false,\"createdDT\": \"2019\/10\/03 @ 12:56:58\",\"context\": []}",
   "requestContext": {
     "authorizer": {
       "principalId": "mock-oauth2|9999999999"

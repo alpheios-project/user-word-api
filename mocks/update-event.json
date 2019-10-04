@@ -1,7 +1,7 @@
 {
-  "body": "{\"languageCode\":\"lat\",\"targetWord\":\"puella\", \"important\":\"false\" }",
+  "body": "{\"ID\": \"lat-footest\",\"listID\": \"auth0|999999999999999999999999-lat\",\"userID\": \"auth0|999999999999999999999999\", \"languageCode\": \"lat\",\"targetWord\": \"footest\",\"important\": true,\"createdDT\": \"2019\/10\/03 @ 12:56:58\",\"context\": []}",
   "pathParameters": {
-    "id": "lat:puella"
+    "id": "lat:footest"
   },
   "requestContext": {
     "authorizer": {

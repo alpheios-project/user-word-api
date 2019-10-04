@@ -1,10 +1,17 @@
 import * as dynamoDbLib from "./libs/dynamodb-lib";
+import ajv from 'ajv';
 import { success, failure } from "./libs/response-lib";
+import schema from './schema.json'
 
 const TABLE_NAME = process.env.DATABASE_NAME
+const VALIDATE = new ajv().compile(schema)
 
 export async function main(event, context) {
   const data = JSON.parse(event.body);
+  let valid = VALIDATE(data)
+  if (!valid) {
+    return failure({ status: false });
+  }
   const params = {
     TableName: TABLE_NAME,
     // 'Key' defines the partition key and sort key of the item to be updated

@@ -8,17 +8,15 @@
       "$id": "#/definitions/targetWord",
       "type": "string",
       "title": "Target Word Schema",
-      "default": "",
       "examples": [
         "cespitum"
       ],
-      "pattern": "^(.*)$"
+      "pattern": "^(.+)$"
     },
     "languageCode": {
       "$id": "#/definitions/languageCode",
       "type": "string",
       "title": "Language Code Schema",
-      "default": "",
       "examples": [
         "lat"
       ],
@@ -28,7 +26,6 @@
       "$id": "#/definitions/createdDT",
       "type": "string",
       "title": "Created DT Schema",
-      "default": "",
       "examples": [
         "2019/10/03 @ 12:56:58"
       ],
@@ -60,11 +57,10 @@
           "$id": "#/definitions/imported/oa/exact",
           "type": "string",
           "title": "Exact Schema",
-          "default": "",
           "examples": [
             "cespitum"
           ],
-          "pattern": "^(.*)$"
+          "pattern": "^(.+)$"
         },
         "prefix": {
           "$id": "#/definitions/imported/oa/prefix",
@@ -110,31 +106,28 @@
       "$id": "#/properties/ID",
       "type": "string",
       "title": "Word Item ID Schema",
-      "default": "",
       "examples": [
         "lat-cespitum"
       ],
-      "pattern": "^\\w\\w\\w-(.*)$"
+      "pattern": "^\\w\\w\\w-(.+)$"
     },
     "listID": {
       "$id": "#/properties/listID",
       "type": "string",
       "title": "List ID Schema",
-      "default": "",
       "examples": [
         "auth0|5c76d34f0570702eabd4c27e-lat"
       ],
-      "pattern": "^(.*?)|(.*?)-\\w\\w\\w$"
+      "pattern": "^(.+?)\\|(.+?)-\\w\\w\\w$"
     },
     "userID": {
       "$id": "#/properties/userID",
       "type": "string",
       "title": "Userid Schema",
-      "default": "",
       "examples": [
-        "auth0|5c76d34f0570702eabd4c27e"
+        "auth0|999999999999"
       ],
-      "pattern": "^auth0|.*$"
+      "pattern": "^(.+?)\\|.+$"
     },
     "languageCode": {
       "$ref": "#/definitions/languageCode"
@@ -210,7 +203,7 @@
                 "examples": [
                   "http://thelatinlibrary.com/apuleius/apuleius1.shtml"
                 ],
-                "pattern": "^(.*)$"
+                "pattern": "^(.+)$"
               },
               "selector": {
                 "$ref": "#/definitions/imported/oa/selector"
