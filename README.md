@@ -1,131 +1,222 @@
-# Serverless Node.js Starter
+# Alpheios User Word API
 
-A Serverless starter that adds ES7 syntax, serverless-offline, environment variables, and unit test support. Part of the [Serverless Stack](http://serverless-stack.com) guide.
+## API Documentation
 
-[Serverless Node.js Starter](https://github.com/AnomalyInnovations/serverless-nodejs-starter) uses the [serverless-webpack](https://github.com/serverless-heaven/serverless-webpack) plugin, [Babel](https://babeljs.io), [serverless-offline](https://github.com/dherault/serverless-offline), and [Jest](https://facebook.github.io/jest/). It supports:
+Operation: `GET /words`
 
-- **ES7 syntax in your handler functions**
-  - Use `import` and `export`
-- **Package your functions using Webpack**
-- **Run API Gateway locally**
-  - Use `serverless offline start`
-- **Support for unit tests**
-  - Run `npm test` to run your tests
-- **Sourcemaps for proper error messages**
-  - Error message show the correct line numbers
-  - Works in production with CloudWatch
-- **Automatic support for multiple handler files**
-  - No need to add a new entry to your `webpack.config.js`
-- **Add environment variables for your stages**
+Description: returns all word item data for all languages for the authorized principal
+
+Required Request Header: `Authorization: Bearer <access token>`
+
+Response Content-Type: `application/json`
+
+Success Response Code: `200`
+
+Success Response Body: Array of Objects adhering to [schema.json](schema.json)
+
+
+Error Condition: Invalid or missing access token
+
+Error Response Code: `401`
+
+Error Response Body: `{ "message": "unauthorized"}`
+
+
+Error Condition: Unexpected error
+
+Error Response Code: `500`
+
+Error Response Body: `{ "status": false}`
 
 ---
 
-### Demo
+Operation: `GET /words?languageCode={code}`
 
-A demo version of this service is hosted on AWS - [`https://z6pv80ao4l.execute-api.us-east-1.amazonaws.com/dev/hello`](https://z6pv80ao4l.execute-api.us-east-1.amazonaws.com/dev/hello)
+Description: returns all word item data for the specified language for the authorized principal
 
-And here is the ES7 source behind it
+Required Request Header: `Authorization: Bearer <access token>`
 
-``` javascript
-export const hello = async (event, context, callback) => {
-  const response = {
-    statusCode: 200,
-    body: JSON.stringify({
-      message: `Go Serverless v1.0! ${(await message({ time: 1, copy: 'Your function executed successfully!'}))}`,
-      input: event,
-    }),
-  };
+Response Content-Type: `application/json`
 
-  callback(null, response);
-};
+Success Response Code: `200`
 
-const message = ({ time, ...rest }) => new Promise((resolve, reject) => 
-  setTimeout(() => {
-    resolve(`${rest.copy} (with a delay)`);
-  }, time * 1000)
-);
-```
+Success Response Body: Array of Objects adhering to [schema.json](schema.json)
 
-### Requirements
 
-- [Install the Serverless Framework](https://serverless.com/framework/docs/providers/aws/guide/installation/)
-- [Configure your AWS CLI](https://serverless.com/framework/docs/providers/aws/guide/credentials/)
+Error Condition: Invalid or missing access token
 
-### Installation
+Error Response Code: `401`
 
-To create a new Serverless project.
+Error Response Body: `{ "message": "unauthorized"}`
 
-``` bash
-$ serverless install --url https://github.com/AnomalyInnovations/serverless-nodejs-starter --name my-project
-```
 
-Enter the new directory
+Error Condition: Unexpected error
 
-``` bash
-$ cd my-project
-```
+Error Response Code: `500`
 
-Install the Node.js packages
+Error Response Body: `{ "status": false}`
 
-``` bash
-$ npm install
-```
+---
 
-### Usage
+Operation: `GET /words/{id}`
 
-To run unit tests on your local
+Description: returns a specific word item for the authorized principal
 
-``` bash
-$ npm test
-```
+Required Request Header: `Authorization: Bearer <access token>`
 
-To run a function on your local
+Response Content-Type: `application/json`
 
-``` bash
-$ serverless invoke local --function hello
-```
+Success Response Code: `200`
 
-To simulate API Gateway locally using [serverless-offline](https://github.com/dherault/serverless-offline)
+Success Response Body: Object adhering to [schema.json](schema.json)
 
-``` bash
-$ serverless offline start
-```
 
-Run your tests
+Error Condition: Invalid or missing access token
 
-``` bash
-$ npm test
-```
+Error Response Code: `401`
 
-We use Jest to run our tests. You can read more about setting up your tests [here](https://facebook.github.io/jest/docs/en/getting-started.html#content).
+Error Response Body: `{ "message": "unauthorized"}`
 
-Deploy your project
+Error Condition: Item not found
 
-``` bash
-$ serverless deploy
-```
 
-Deploy a single function
+Error Response Code: `500`
 
-``` bash
-$ serverless deploy function --function hello
-```
+Error Response Body: `{ "status": "Item not found"}`
 
-To add another function as a new file to your project, simply add the new file and add the reference to `serverless.yml`. The `webpack.config.js` automatically handles functions in different files.
 
-To add environment variables to your project
+Error Condition: Unexpected error
 
-1. Rename `env.example` to `env.yml`.
-2. Add environment variables for the various stages to `env.yml`.
-3. Uncomment `environment: ${file(env.yml):${self:provider.stage}}` in the `serverless.yml`.
-4. Make sure to not commit your `env.yml`.
+Error Response Code: `500`
 
-### Support
+Error Response Body: `{ "status": false}`
 
-- Send us an [email](mailto:contact@anoma.ly) if you have any questions
-- Open a [new issue](https://github.com/AnomalyInnovations/serverless-nodejs-starter/issues/new) if you've found a bug or have some suggestions.
-- Or submit a pull request!
+---
 
-### Maintainers
+Operation: `POST /words/{id}` 
 
-Serverless Node.js Starter is maintained by Frank Wang ([@fanjiewang](https://twitter.com/fanjiewang)) & Jay V ([@jayair](https://twitter.com/jayair)). [**Subscribe to our newsletter**](http://eepurl.com/cEaBlf) for updates. Send us an [email](mailto:contact@anoma.ly) if you have any questions.
+Description: saves a new word item(or replaces if existing) for the authorized principal.
+             
+Required Request Header: `Authorization: Bearer <access token>`
+
+Required Request Body: JSON string adhering to [schema.json](schema.json)
+
+Response Content-Type: `application/json`
+
+Success Response Code: `201`
+
+Success Response Body: Object adhering to [schema.json](schema.json)
+
+
+Error Condition: Invalid or missing access token
+
+Error Response Code: `401`
+
+Error Response Body: `{ "message": "unauthorized"}`
+
+
+Error Condition: Invalid data or unexpected error
+
+Error Response Code: `500`
+
+Error Response Body: `{ "status": false}`
+
+---
+
+Operation: `PUT /words/{id}` 
+
+Description: updates a word item for the authorized principal
+
+Required Request Header: `Authorization: Bearer <access token>`
+
+Required Request Body: JSON string adhering to [schema.json](schema.json)
+
+
+Response Content-Type: `application/json`
+
+Success Response Code: `200`
+
+Success Response Body: `{ "status": true }`
+
+
+Error Condition: Invalid or missing access token
+
+Error Response Code: `401`
+
+Error Response Body: `{ "message": "unauthorized"}`
+
+
+Error Condition: Invalid data or unexpected error
+
+Error Response Code: `500`
+
+Error Response Body: `{ "status": false}`
+
+---
+
+Operation: `DELETE /words/{id}` 
+
+Description: deletes a single word item for the authorized principal
+
+Required Request Header: `Authorization: Bearer <access token>`
+
+Response Content-Type: `application/json`
+
+Success Response Code: `200`
+
+Success Response Body: `{ "status": true }`
+
+
+Error Condition: Invalid or missing access token
+
+Error Response Code: `401`
+
+Error Response Body: `{ "message": "unauthorized"}`
+
+
+Error Condition: Unexpected error
+
+Error Response Code: `500`
+
+Error Response Body: `{ "status": false}`
+
+---
+
+Operation: `DELETE /words?languageCode={code}` 
+
+Description: deletes all word items for the specified language for the authorized principal
+
+Required Request Header: `Authorization: Bearer <access token>`
+
+Response Content-Type: `application/json`
+
+Success Response Code: `200`
+
+Success Response Body: `{ "status": true }`
+
+
+Error Condition: Invalid or missing access token
+
+Error Response Code: `401`
+
+Error Response Body: `{ "message": "unauthorized"}`
+
+
+Error Condition: Unexpected error
+
+Error Response Code: `500`
+
+Error Response Body: `{ "status": false}`
+
+
+## Authorization
+
+Bearer Token.
+
+API Operations are protected by login to the Alpheios Auth0 domain. All operations require a
+Signed JWT Token granting access to the correct audience be supplied in an Author.
+
+
+## Developer Instructions
+
+Built using the Servless Stack following the tutorial at https://serverless-stack.com
