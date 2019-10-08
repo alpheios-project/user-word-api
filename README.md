@@ -36,6 +36,8 @@ Description: returns all word item data for the specified language for the autho
 
 Required Request Header: `Authorization: Bearer <access token>`
 
+Required Path Parameter: `languageCode` - 3 character language code
+
 Response Content-Type: `application/json`
 
 Success Response Code: `200`
@@ -63,6 +65,8 @@ Operation: `GET /words/{id}`
 Description: returns a specific word item for the authorized principal
 
 Required Request Header: `Authorization: Bearer <access token>`
+
+Required Path Parameter: `id` - word id in the format `<languagecode>-<word>`
 
 Response Content-Type: `application/json`
 
@@ -99,6 +103,8 @@ Description: saves a new word item(or replaces if existing) for the authorized p
              
 Required Request Header: `Authorization: Bearer <access token>`
 
+Required Path Parameter: `id` - word id in the format `<languagecode>-<word>`
+
 Required Request Body: JSON string adhering to [schema.json](schema.json)
 
 Response Content-Type: `application/json`
@@ -128,6 +134,8 @@ Operation: `PUT /words/{id}`
 Description: updates a word item for the authorized principal
 
 Required Request Header: `Authorization: Bearer <access token>`
+
+Required Path Parameter: `id` - word id in the format `<languagecode>-<word>`
 
 Required Request Body: JSON string adhering to [schema.json](schema.json)
 
@@ -160,6 +168,8 @@ Description: deletes a single word item for the authorized principal
 
 Required Request Header: `Authorization: Bearer <access token>`
 
+Required Path Parameter: `id` - word id in the format `<languagecode>-<word>`
+
 Response Content-Type: `application/json`
 
 Success Response Code: `200`
@@ -187,6 +197,8 @@ Operation: `DELETE /words?languageCode={code}`
 Description: deletes all word items for the specified language for the authorized principal
 
 Required Request Header: `Authorization: Bearer <access token>`
+
+Required Path Parameter: `languageCode` - 3 character language code
 
 Response Content-Type: `application/json`
 
@@ -298,6 +310,10 @@ Create a DynamoDB table with the following properties:
 Primary partition key: userId
 
 Primary sort key: wordId
+
+**Node**
+
+node v10.5.0
 
 **Serverless**
 
