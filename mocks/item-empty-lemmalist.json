@@ -1,0 +1,30 @@
+{
+  "ID": "lat-pelles",
+  "listID": "auth0|999999999999999999999999-lat",
+  "userID": "auth0|999999999999999999999999",
+  "languageCode": "lat",
+  "targetWord": "pelles",
+  "important": false,
+  "createdDT": "2019\/10\/03 @ 15:46:35",
+  "homonym": {
+    "targetWord": "pelles",
+    "lemmasList": ""
+  },
+  "context": [
+    {
+      "target": {
+        "source": "http:\/\/thelatinlibrary.com\/caesar\/gall4.shtml",
+        "selector": {
+          "type": "TextQuoteSelector",
+          "exact": "pelles",
+          "prefix": "Atque in eam se consuetudinem adduxerunt ut locis frigidissimis neque vestitus praeter",
+          "suffix": "habeant quicquam, quarum propter exiguitatem magna est corporis pars aperta, et laventur in fluminibus.",
+          "languageCode": "lat"
+        }
+      },
+      "languageCode": "lat",
+      "targetWord": "pelles",
+      "createdDT": "2019\/10\/03 @ 15:46:35"
+    }
+  ]
+}

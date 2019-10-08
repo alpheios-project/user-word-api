@@ -3,6 +3,7 @@
     "id": "grc:ποιητὴς"
   },
   "body": "{\"languageCode\":\"grc\",\"targetWord\":\"ποιητὴς\", \"important\":\"true\" }",
+  "body": "{\"ID\": \"grc-ποιητὴς\",\"listID\": \"auth0|999999999999999999999999-lat\",\"userID\": \"auth0|999999999999999999999999\", \"languageCode\": \"grc\",\"targetWord\": \"ποιητὴς\",\"important\": false,\"createdDT\": \"2019\/10\/03 @ 12:56:58\",\"context\": []}",
   "requestContext": {
     "authorizer": {
       "principalId": "mock-oauth2|9999999999"

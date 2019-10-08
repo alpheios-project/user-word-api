@@ -1,0 +1,14 @@
+{
+  "ID": "lat-pelles",
+  "listID": "auth0|999999999999999999999999-lat",
+  "userID": "auth0|999999999999999999999999",
+  "languageCode": "lat",
+  "targetWord": "pelles",
+  "important": false,
+  "createdDT": "2019\/10\/03 @ 15:46:35",
+  "homonym": {
+    "targetWord": "pelles",
+    "lemmasList": "pello, pellis"
+  },
+  "context": []
+}
