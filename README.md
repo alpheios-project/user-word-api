@@ -318,6 +318,38 @@ In addition, the provider must be setup with the following environment variables
   * `AUTH0_TEST_ID` path to a file containing a mock access token that can be used by clients for testing
   * `DATABASE_NAME` name of the DynamoDB Table 
 
-  ### Testing 
+The Alpheios development environment has `AUTH0_CLIENT_PUBLIC_KEY` read from a file in the root directory named 'public_key' and the `AUTH0_TEST_ID` read from a file in the root directory named `test_id`. These files are kept in a private repository and copied for deployment.
+
+### Testing 
   
-  ### Deployment
+  You can test invoking the API functions locally:
+ 
+ ```
+ serverless invoke local --function <function> --paths ./mocks/<filname>
+ ```
+ 
+ e.g. 
+
+```serverless invoke local --function list --paths ./mocks/list-event.json```
+
+Mocks are available for each operation.
+
+Note that local API invocations WILL write to the remote DynamoDB.
+
+Unit tests are available for library functions only currently.
+  
+### Deployment
+
+Deploy to dev stage
+
+```
+serverless deploy --stage dev
+```
+
+Deploy to prod stage
+
+```
+serverless deploy 
+```
+
+
