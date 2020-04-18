@@ -96,6 +96,8 @@
     "targetWord",
     "important",
     "createdDT",
+    "updatedDT",
+    "frequency",
     "context"
   ],
   "optional": [
@@ -146,6 +148,24 @@
     },
     "createdDT": {
       "$ref": "#/definitions/createdDT"
+    },
+    "updatedDT": {
+      "$id": "#/properties/updatedDT",
+      "type": "string",
+      "title": "Updated DT Schema",
+      "examples": [
+        "2019/10/03 @ 12:56:58"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "frequency": {
+      "$id": "#/properties/frequency",
+      "type": "string",
+      "title": "Lookup frequency Schema",
+      "default": "1",
+      "examples": [
+        "1"
+      ]
     },
     "homonym": {
       "$id": "#/properties/homonym",
