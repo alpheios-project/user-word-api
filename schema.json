@@ -160,12 +160,9 @@
     },
     "frequency": {
       "$id": "#/properties/frequency",
-      "type": "string",
+      "type": "number",
       "title": "Lookup frequency Schema",
-      "default": "1",
-      "examples": [
-        "1"
-      ]
+      "default": 1
     },
     "homonym": {
       "$id": "#/properties/homonym",
