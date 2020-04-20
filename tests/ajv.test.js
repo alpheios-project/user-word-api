@@ -19,6 +19,7 @@ import emptyContext from '../mocks/item-empty-context.json'
 import emptyExact from '../mocks/item-empty-exact.json'
 import emptyPrefix from '../mocks/item-empty-prefix.json'
 import emptySuffix from '../mocks/item-empty-suffix.json'
+import ut from '../mocks/item-ut.json'
 
 describe('ajv.test.js', () => {
 
@@ -106,5 +107,10 @@ describe('ajv.test.js', () => {
   it('fails empty exact', () => {
     let valid = validate(emptyExact)
     expect(valid).toBeFalsy()
+  })
+
+  it('allows ut', () => {
+    let valid = validate(ut)
+    expect(valid).toBeTruthy()
   })
 })

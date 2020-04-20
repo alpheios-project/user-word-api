@@ -1,0 +1,24 @@
+{"ID":"lat-beautum",
+  "listID":"auth0|alpheiosMockUser-lat",
+  "userID":"auth0|alpheiosMockUser",
+  "languageCode":"lat",
+  "targetWord":"beautum",
+  "important":false,
+  "createdDT":"2019/11/01 @ 16:15:23",
+  "context":[
+    {"target":
+      {"source":"source1",
+        "selector":{
+          "type":"TextQuoteSelector",
+          "exact":"beautum",
+          "prefix":"prefix1",
+          "suffix":"suffix1",
+          "languageCode":"lat"
+          }
+      },
+      "languageCode":"lat",
+      "targetWord":"beautum",
+      "createdDT":"2019/11/01 @ 16:15:23"
+    }
+  ]
+}

@@ -9,9 +9,17 @@ plugins:
 # serverless-webpack configuration
 # Enable auto-packing of external modules
 custom:
+  myStage: ${opt:stage, self:provider.stage}
   webpack:
     webpackConfig: ./webpack.config.js
     includeModules: true
+  myEnvironment:
+    audience:
+      prod: alpheios.net:apis
+      dev: alpheios.net:dev-apis
+    database:
+      prod: user-word-items
+      dev: user-word-items-dev
 
 provider:
   name: aws
@@ -20,9 +28,9 @@ provider:
   region: us-east-2
   environment:
     AUTH0_CLIENT_PUBLIC_KEY: ${file(./public_key)}
-    AUTH0_AUDIENCE: alpheios.net:apis
+    AUTH0_AUDIENCE: ${self:custom.myEnvironment.audience.${self:custom.myStage}}
     AUTH0_TEST_ID: ${file(./test_id)}
-    DATABASE_NAME: user-word-items
+    DATABASE_NAME: ${self:custom.myEnvironment.database.${self::custom.myStage}}
 
   # 'iamRoleStatements' defines the permission policy for the Lambda function.
   # In this case Lambda functions are granted with permissions to access DynamoDB.
