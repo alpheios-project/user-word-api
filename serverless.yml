@@ -30,7 +30,7 @@ provider:
     AUTH0_CLIENT_PUBLIC_KEY: ${file(./public_key)}
     AUTH0_AUDIENCE: ${self:custom.myEnvironment.audience.${self:custom.myStage}}
     AUTH0_TEST_ID: ${file(./test_id)}
-    DATABASE_NAME: ${self:custom.myEnvironment.database.${self::custom.myStage}}
+    DATABASE_NAME: ${self:custom.myEnvironment.database.${self:custom.myStage}}
 
   # 'iamRoleStatements' defines the permission policy for the Lambda function.
   # In this case Lambda functions are granted with permissions to access DynamoDB.
