@@ -97,10 +97,10 @@ Error Response Body: `{ "status": false}`
 
 ---
 
-Operation: `POST /words/{id}` 
+Operation: `POST /words/{id}`
 
 Description: saves a new word item(or replaces if existing) for the authorized principal.
-             
+
 Required Request Header: `Authorization: Bearer <access token>`
 
 Required Path Parameter: `id` - word id in the format `<languagecode>-<word>`
@@ -129,7 +129,7 @@ Error Response Body: `{ "status": false}`
 
 ---
 
-Operation: `PUT /words/{id}` 
+Operation: `PUT /words/{id}`
 
 Description: updates a word item for the authorized principal
 
@@ -162,7 +162,7 @@ Error Response Body: `{ "status": false}`
 
 ---
 
-Operation: `DELETE /words/{id}` 
+Operation: `DELETE /words/{id}`
 
 Description: deletes a single word item for the authorized principal
 
@@ -192,7 +192,7 @@ Error Response Body: `{ "status": false}`
 
 ---
 
-Operation: `DELETE /words?languageCode={code}` 
+Operation: `DELETE /words?languageCode={code}`
 
 Description: deletes all word items for the specified language for the authorized principal
 
@@ -318,9 +318,9 @@ node v10.5.0
 **Serverless**
 
  `npm install serverless -g`
- 
+
 ### Configuration
- 
+
 The following properties in the `serverless.yml` must be updated to match the AWS deployment environment:
 
   * `provider.stage` (e.g. prod or dev)
@@ -332,28 +332,28 @@ In addition, the provider must be setup with the following environment variables
   * `AUTH0_CLIENT_PUBLIC_KEY` the public key that will be used to verify the JWT access tokens
   * `AUTH0_AUDIENCE` the audience which must include a grant in the JWT access token (e.g. alpheios.net:apis)
   * `AUTH0_TEST_ID` path to a file containing a mock access token that can be used by clients for testing
-  * `DATABASE_NAME` name of the DynamoDB Table 
+  * `DATABASE_NAME` name of the DynamoDB Table
 
 The Alpheios development environment has `AUTH0_CLIENT_PUBLIC_KEY` read from a file in the root directory named 'public_key' and the `AUTH0_TEST_ID` read from a file in the root directory named `test_id`. These files are kept in a private repository and copied for deployment.
 
-### Testing 
-  
-  You can test invoking the API functions locally:
- 
- ```
- serverless invoke local --function <function> --paths ./mocks/<filname>
- ```
- 
- e.g. 
+### Testing
 
-```serverless invoke local --function list --paths ./mocks/list-event.json```
+  You can test invoking the API functions locally:
+
+ ```
+ serverless invoke local --function <function> --path ./mocks/<filname>
+ ```
+
+ e.g.
+
+```serverless invoke local --function list --path ./mocks/list-event.json```
 
 Mocks are available for each operation.
 
 Note that local API invocations WILL write to the remote DynamoDB.
 
 Unit tests are available for library functions only currently.
-  
+
 ### Deployment
 
 Deploy to dev stage
@@ -365,7 +365,7 @@ serverless deploy --stage dev
 Deploy to prod stage
 
 ```
-serverless deploy 
+serverless deploy
 ```
 
 

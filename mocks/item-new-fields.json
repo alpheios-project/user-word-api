@@ -1,0 +1,16 @@
+{
+  "ID": "lat-crederetur",
+  "listID": "google-oauth2|114076270674179873629-lat",
+  "userID": "google-oauth2|114076270674179873629",
+  "languageCode": "lat",
+  "targetWord": "crederetur",
+  "important": false,
+  "createdDT": "2020/04/21 @ 17:28:05",
+  "frequency": 2,
+  "homonym": {
+    "targetWord": "crederetur",
+    "lemmasList": "credo"
+  },
+  "context": [],
+  "updatedDT": "2020/04/21 @ 17:36:26"
+}

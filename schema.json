@@ -96,12 +96,12 @@
     "targetWord",
     "important",
     "createdDT",
-    "updatedDT",
-    "frequency",
     "context"
   ],
   "optional": [
-    "homonym"
+    "homonym",
+    "updatedDT",
+    "frequency"
   ],
   "properties": {
     "ID": {
@@ -153,6 +153,7 @@
       "$id": "#/properties/updatedDT",
       "type": "string",
       "title": "Updated DT Schema",
+      "default": false,
       "examples": [
         "2019/10/03 @ 12:56:58"
       ],

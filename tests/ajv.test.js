@@ -20,6 +20,7 @@ import emptyExact from '../mocks/item-empty-exact.json'
 import emptyPrefix from '../mocks/item-empty-prefix.json'
 import emptySuffix from '../mocks/item-empty-suffix.json'
 import ut from '../mocks/item-ut.json'
+import newFields from '../mocks/item-new-fields.json'
 
 describe('ajv.test.js', () => {
 
@@ -113,4 +114,11 @@ describe('ajv.test.js', () => {
     let valid = validate(ut)
     expect(valid).toBeTruthy()
   })
+
+  it('allows updatedDT and frequency', () => {
+    let valid = validate(newFields)
+    expect(valid).toBeTruthy()
+  })
+
+
 })
